@@ -1,0 +1,17 @@
+---
+- hosts: local
+  become: yes
+  handlers:
+    - name: start service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      listen: "restart service"
+  tasks:
+    - name: Install apache
+      yum:
+        name: httpd
+        state: latest
+      notify: "restart service"
+...

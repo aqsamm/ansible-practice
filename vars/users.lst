@@ -1,0 +1,11 @@
+staff:
+  - joe
+  - john
+  - bob
+  - glob
+faculty:
+  - dan
+  - matt
+others:
+  - will
+  - jack

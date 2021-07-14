@@ -1,0 +1,15 @@
+---
+- hosts: local
+  tasks:
+    - name: Create a file
+      file:
+        name: /home/ansible/name.txt
+        state: touch
+      register: output
+    - name: Output debug information.
+      debug: msg="Register output is {{output}}"
+    - name: edit file
+      lineinfile:
+        path: /home/ansible/name.txt
+        line: "{{output.uid}}"
+...

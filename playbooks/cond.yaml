@@ -1,0 +1,17 @@
+---
+- hosts: local
+  become: yes
+  tasks:
+    - name: create users
+      user:
+        name: "{{item}}"
+      with_items:
+        - sam
+        - bob
+        - dick
+    - name: add line
+      file:
+        path: /var/www/html/index.html
+        state: touch
+      when:
+        - ansible_hostname == "germ62"

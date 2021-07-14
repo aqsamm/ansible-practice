@@ -1,0 +1,2 @@
+iMy network address is 10.100.52.62
+CentOS is my OS version

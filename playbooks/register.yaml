@@ -1,0 +1,11 @@
+---
+- hosts: local
+  tasks:
+    - name: Create a file
+      file:
+        name: /home/name.txt
+        state: touch
+      register: output
+    - name: Output debug information.
+      debug: msg="Register output is {{output}}"
+
