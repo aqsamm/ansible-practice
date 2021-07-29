@@ -1,0 +1,10 @@
+## Deploying a hardened sudoers file working with templates ##
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: create file
+    template:
+      src: /home/ansible/templates/hardened.j2
+      dest: /etc/sudoers.d/hardened
+      validate: /sbin/visudo -cf %s
