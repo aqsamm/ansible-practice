@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    sudoers_file: /home/ansible/hardened.j2
+  tasks:
+  - name: generate sudoers file
+    template:
+      src: "{{sudoers_file}}"
+      dest: /etc/sudoers.d/hardened
+      validate: /sbin/visudo -cf "{{sudoers_file}}"
