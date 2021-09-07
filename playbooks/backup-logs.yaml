@@ -1,0 +1,21 @@
+# Use archive module to archive the /var/log directory
+---
+- hosts: all
+  user: ansible
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Compress dir /var/log/ into /home/ansible/logs.tar.gz
+      archive:
+        path: /var/log
+        dest: /home/ansible/logs.tar.gz
+        owner: ansible
+        group: ansible
+        format: gz
+
+# Use fetch to get the log files to local sysytem
+    - name: Fetch log files to local filesystem
+      fetch:
+        src: /home/ansible/logs.tar.gz
+        dest: logbackup-{{ inventory_hostname }}.tar.gz
+        flat: yes

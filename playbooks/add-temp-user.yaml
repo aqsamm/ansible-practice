@@ -1,0 +1,15 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  tasks:
+  - name: Add a consultant whose account you want to expire
+    user:
+      name: james20
+      shell: /bin/bash
+      groups: developers
+      append: yes
+      expires: 1629738896
+      password: $6$xDw/E.UKTCGQNQSZ$1m4B0zDOELoui1rFPVi/Kh7t3cjwKkw82hpHPN64R3ruysorYV6rmXpoLUlSzq9t5s8im226.lde5wlsqCT/P. # hash of this user password
+
+

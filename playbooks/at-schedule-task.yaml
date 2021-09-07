@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  become: no
+  gather_facts: no
+  tasks:
+    - name: Schedule a commnd to execute in 20 mins as ansible user
+      at:
+        command: df -h >> /tmp/diskspace
+        count: 20
+        units: minutes
