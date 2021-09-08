@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  become: no
+  gather_facts: no
+  tasks:
+
+  - name: Match a command to an existing job and delete the job
+    at:
+      command: df -h > /tmp/diskspace
+      state: absent
