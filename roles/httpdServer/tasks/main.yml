@@ -1,0 +1,11 @@
+---
+# tasks file for /home/ansible/exam/roles/httpdServer
+#
+- yum:
+    name: httpd
+    state: latest
+
+- service:
+    name: httpd
+    state: started
+    enabled: yes
